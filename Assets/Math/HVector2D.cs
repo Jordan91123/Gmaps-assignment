@@ -80,9 +80,9 @@ public class HVector2D
         return Vector2.zero; // change this
     }
 
-    public Vector3 ToUnityVector3()
+    public Vector3 ToUnityVector3(HVector2D vector)
     {
-        return Vector2.zero; // change this
+        return new Vector3(vector.x, vector.y, 0);
     }
 
     // public void Print()
