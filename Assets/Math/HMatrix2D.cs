@@ -102,7 +102,7 @@ public class HMatrix2D
         return // your code here
     }*/
 
-    public void SetIdentity()
+    /*public void SetIdentity()
     {
         for(int y=0; y < 2; y++)
         {
@@ -118,7 +118,7 @@ public class HMatrix2D
                 }
             }
         }
-    }
+    }*/
 
     public void SetTranslationMat(float transX, float transY)
     {
