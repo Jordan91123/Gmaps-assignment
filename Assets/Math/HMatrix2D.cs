@@ -16,48 +16,92 @@ public class HMatrix2D
 
     public HMatrix2D(float[,] multiArray)
     {
-        // your code here
+        for (int y = 0; y < 3; y++)
+        {
+            for (int x = 0; x < 3; x++)
+            {
+                entries[y, x] = multiArray[y, x];
+            }
+        }
     }
 
     public HMatrix2D(float m00, float m01, float m02,
              float m10, float m11, float m12,
              float m20, float m21, float m22)
     {
-	    // First row
-        // your code here
+        entries = new float[3, 3];
+
+        // First row
+        entries[0, 0] = m00;
+        entries[0, 1] = m01;
+        entries[0, 2] = m02;
 
         // Second row
-        // your code here
+        entries[1, 0] = m10;
+        entries[1, 1] = m11;
+        entries[1, 2] = m12;
 
         // Third row
-        // your code here
+        entries[2, 0] = m20;
+        entries[2, 1] = m21;
+        entries[2, 2] = m22;
     }
 
-    /*public static HMatrix2D operator +(HMatrix2D left, HMatrix2D right)
+    public static HMatrix2D operator +(HMatrix2D left, HMatrix2D right)
     {
-        return // your code here
+        HMatrix2D result = new HMatrix2D();
+
+        for (int y = 0; y < 3; y++)
+        {
+            for (int x = 0; x < 3; x++)
+            {
+                result.entries[y, x] = left.entries[y, x] + right.entries[y, x];
+            }
+        }
+
+        return result;
     }
 
     public static HMatrix2D operator -(HMatrix2D left, HMatrix2D right)
     {
-        return // your code here
+        HMatrix2D result = new HMatrix2D();
+
+        for (int y = 0; y < 3; y++)
+        {
+            for (int x = 0; x < 3; x++)
+            {
+                result.entries[y, x] = left.entries[y, x] - right.entries[y, x];
+            }
+        }
+
+        return result;
     }
 
     public static HMatrix2D operator *(HMatrix2D left, float scalar)
     {
-        return // your code here
+        HMatrix2D result = new HMatrix2D();
+
+        for (int y = 0; y < 3; y++)
+        {
+            for (int x = 0; x < 3; x++)
+            {
+                result.entries[y, x] = left.entries[y, x] * scalar;
+            }
+        }
+
+        return result;
     }
 
     // Note that the second argument is a HVector2D object
     //
-    public static HVector2D operator *(HMatrix2D left, HVector2D right)
+    /*public static HVector2D operator *(HMatrix2D left, HVector2D right)
     {
         return // your code here
-    }
+    }*/
 
     // Note that the second argument is a HMatrix2D object
     //
-    public static HMatrix2D operator *(HMatrix2D left, HMatrix2D right)
+    /*public static HMatrix2D operator *(HMatrix2D left, HMatrix2D right)
     {
         return new HMatrix2D
         (
@@ -80,19 +124,39 @@ public class HMatrix2D
          and so on for another 7 entries
 
     ) ;
-    }
+    }*/
 
     public static bool operator ==(HMatrix2D left, HMatrix2D right)
     {
-        // your code here
+        for (int y = 0; y < 3; y++)
+        {
+            for (int x = 0; x < 3; x++)
+            {
+                if (left.entries[y, x] != right.entries[y, x])
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public static bool operator !=(HMatrix2D left, HMatrix2D right)
     {
-        // your code here
+        for (int y = 0; y < 3; y++)
+        {
+            for (int x = 0; x < 3; x++)
+            {
+                if (left.entries[y, x] != right.entries[y, x])
+                {
+                    return true; 
+                }
+            }
+        }
+        return false;
     }
 
-    public HMatrix2D transpose()
+    /*public HMatrix2D transpose()
     {
         return // your code here
     }
@@ -102,23 +166,33 @@ public class HMatrix2D
         return // your code here
     }*/
 
-    /*public void SetIdentity()
+    public void SetIdentity()
     {
-        for(int y=0; y < 2; y++)
+        //original
+        /*for (int y = 0; y < 3; y++)
         {
-            for (int x = 0; x < 2; y++)
+            for (int x = 0; x < 3; x++)
             {
-                if (x == y )
+                if (x == y)
                 {
-                    matrix[y, x] = 1;
+                    entries[y, x] = 1;
                 }
                 else
                 {
-                    matrix[y, x] = 0; 
+                    entries[y, x] = 0;
                 }
             }
+        }*/
+
+        //teneary 
+        for (int y = 0; y < 3; y++)
+        {
+            for (int x = 0; x < 3; x++)
+            {
+                entries[y, x] = x == y ? 1 : 0;
+            }
         }
-    }*/
+    }
 
     public void SetTranslationMat(float transX, float transY)
     {

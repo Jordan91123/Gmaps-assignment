@@ -8,7 +8,8 @@ public class TestMatrix : MonoBehaviour
 
     void Start()
     {
-
+        mat.SetIdentity();
+        mat.Print();
     }
 
 }
