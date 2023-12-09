@@ -161,10 +161,10 @@ public class VectorExercises : MonoBehaviour
         HVector2D v1 = new HVector2D(b.x - a.x,b.y - a.y);
         HVector2D v2 = new HVector2D(c.x - a.x,c.y - a.y);
         
-        //projection= find dot profuct - find squared magnitude 
-        float dotProduct = (v2.x * v1.x + v2.y * v1.y);
-        float v1MagnitudeSquared = v1.x * v1.x + v1.y * v1.y;
-        HVector2D proj = new HVector2D((dotProduct / v1MagnitudeSquared) * v1.x, (dotProduct / v1MagnitudeSquared) * v1.y);
+        //finding projection 
+        float dotProduct = v2.x * v1.x + v2.y * v1.y;
+        float v1magsquare = v1.x * v1.x + v1.y * v1.y;
+        HVector2D proj = new HVector2D((dotProduct / v1magsquare) * v1.x, (dotProduct / v1magsquare) * v1.y);
 
         DebugExtension.DebugArrow(a.ToUnityVector3(a), v1.ToUnityVector3(v1), Color.red, 60f);
         DebugExtension.DebugArrow(a.ToUnityVector3(a), v2.ToUnityVector3(v2), Color.yellow, 60f);
